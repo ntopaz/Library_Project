@@ -24,4 +24,4 @@ a login name, and they will be given an ID number to use when logging in in the 
 -----------------------------
 
 
-Created by Nadav Topaz, Miguel Betancourt, Payam Ghobadpour, and Michael Coppola
+Created by Nadav Topaz
