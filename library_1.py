@@ -1,3 +1,8 @@
+### Library project for Software Engineering Course ###
+### Python 2.7 code with SQLite3 database designed to emulate a simple library system ###
+### Created by Nadav Topaz 2013 ###
+
+### Import modules and setup variables ###
 import sqlite3, os, sys, re, time, datetime
 createDB = sqlite3.connect('Library.db')
 queryCurs = createDB.cursor()
@@ -6,6 +11,7 @@ i = 0
 global now
 now = datetime.datetime.now()
 
+### Return books function ###
 def ReturnBooks():
 	os.system('cls')
 	sys.stdout.write("Library DB 1.0 - Return a Book\n")
@@ -57,6 +63,7 @@ def ReturnBooks():
 	raw_input()
 	main();
 
+### Display all books stored in DB ##
 def SeeBooks():
 	os.system('cls')
 	sys.stdout.write("Library DB 1.0 - Currently Owned Books\n")
@@ -92,7 +99,8 @@ def SeeBooks():
 	sys.stdout.write("\nPress any key to return to main menu\n")
 	raw_input()
 	main();
-		
+
+### Function for checking out books ###		
 def CheckOutBook():
 	os.system('cls')
 	sys.stdout.write("Library DB 1.0 - Check Out Book\n")
@@ -135,7 +143,8 @@ def CheckOutBook():
 		sys.stdout.write("You already own this book, please select a different one.\n")
 		raw_input()
 		CheckOutBook();
-		
+
+### Search for books ###
 def BookSearch():
 	global results
 	os.system('cls')
@@ -339,7 +348,7 @@ def BookSearch():
 				main();
 	else:
 		main();
-
+### Registration - Allows user to select a user name and generates a password for them automatically ###
 def Registration():
 	os.system('cls')
 	sys.stdout.write("Library DB 1.0 - Registration\n")
@@ -366,6 +375,7 @@ def Registration():
 	raw_input()
 	main();
 
+### Login system to allow previously registered users to log in ###
 def Login():
 	os.system('cls')
 	sys.stdout.write("Library DB 1.0 - Login\n")
@@ -387,11 +397,12 @@ def Login():
 		sys.stdout.write("Unable to find User; Please register first\n")
 		raw_input()
 		main();
-	
+## Main Funct ##
 def main():
 	os.system('cls')
 	sys.stdout.write("Library DB 1.0\n")
 	sys.stdout.write("----------------------------------------------\n")
+	## If logged in, display different settings ##
 	if i != 0:
 		sys.stdout.write("You are logged in as " + str(login_name) + "." + str(ID_number).replace("(","").replace(",)","") + "\n")	
 	sys.stdout.write("1. Register (First Time User)\n")
@@ -401,7 +412,7 @@ def main():
 	sys.stdout.write("5. Return a Book\n")
 	sys.stdout.write("6. Quits Program\n")
 	decision = raw_input(":")
-	
+
 	if decision == "1":
 		Registration();
 	if decision == "2":
